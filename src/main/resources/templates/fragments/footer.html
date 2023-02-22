@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+<footer th:fragment="footer">
+  <div class="siteInfo">
+    <div>email: <span th:text="${@environment.getProperty('site.email')}"></span></div>
+    <div>author: <span th:text="${@environment.getProperty('site.author')}"></span></div>
+  </div>
+</footer>
+</body>
+</html>
