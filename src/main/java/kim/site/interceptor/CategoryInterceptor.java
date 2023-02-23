@@ -26,7 +26,6 @@ public class CategoryInterceptor implements HandlerInterceptor {
             return true;
         }
         httpSessionService.setCategories(session, categoryService.getCategories());
-        log.info("----------------------set categories::: ", categoryService.getCategories().size());
         return true;
     }
 }

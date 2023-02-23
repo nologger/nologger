@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head}">
+</head>
+<body>
+<div th:replace="~{fragments/aside :: aside}"></div>
+<main>
+    <div class="mainHeader">
+        <h1>Board : <span th:text="${category.title}"></span></h1>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <ul>
+        <li th:each="page : ${pages}">
+            <a th:href="@{{categoryUrl}/view(categoryUrl=${category.url}, id=${page.id})}">
+                <small>[<span th:text="${page.createdAt}"></span>]</small>
+                <span th:text="${page.title}"></span>
+            </a>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

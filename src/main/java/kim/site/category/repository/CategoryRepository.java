@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface CategoryRepository {
     public List<Category> selectCategory();
+    public Category selectCategoryByUrl(String url);
 }

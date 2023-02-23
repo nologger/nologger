@@ -1,12 +1,11 @@
 INSERT INTO CATEGORY
 VALUES(
     NEXT VALUE FOR CATEGORY_SEQUENCE,
-    '',
-    FALSE,
+    NULL,
     0,
-    'Home',
+    TRUE,
     '/',
-    TRUE,
+    'Home',
     NOW(),
     NOW()
 );
@@ -14,12 +13,11 @@ VALUES(
 INSERT INTO CATEGORY
 VALUES(
     NEXT VALUE FOR CATEGORY_SEQUENCE,
-    '',
-    FALSE,
+    NULL,
     1,
-    'About',
-    '/about',
     TRUE,
+    '/about',
+    'About',
     NOW(),
     NOW()
 );
@@ -27,12 +25,43 @@ VALUES(
 INSERT INTO CATEGORY
 VALUES(
     NEXT VALUE FOR CATEGORY_SEQUENCE,
-    '',
-    FALSE,
+    NULL,
     2,
-    'Categorization',
-    '',
     TRUE,
+    NULL,
+    'Category',
+    NOW(),
+    NOW()
+);
+
+INSERT INTO CATEGORY
+VALUES(
+    NEXT VALUE FOR CATEGORY_SEQUENCE,
+    '3',
+    3,
+    FALSE,
+    '/board/ps-code',
+    'ps-code',
+    NOW(),
+    NOW()
+);
+
+INSERT INTO PAGE
+VALUES (
+    NEXT VALUE FOR PAGE_SEQUENCE,
+    '4',
+    'test page1',
+    'test content1',
+    NOW(),
+    NOW()
+);
+
+INSERT INTO PAGE
+VALUES (
+    NEXT VALUE FOR PAGE_SEQUENCE,
+    '4',
+    'test page2',
+    'test content2',
     NOW(),
     NOW()
 );
