@@ -14,7 +14,7 @@ a {
 
 /* set class design */
 .viewer {
-    backgroud: ghostWhite;
+    background: ghostWhite;
     border: 1px solid black;
     padding: 10px 10px 10px 10px;
 }
