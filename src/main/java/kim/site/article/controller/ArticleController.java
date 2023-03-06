@@ -5,10 +5,7 @@ import kim.site.article.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/article")
@@ -37,11 +34,33 @@ public class ArticleController {
         return VIEW_PATH;
     }
 
-    @GetMapping("/recent")
-    public String recentView(Model model) {
-        final String VIEW_PATH = "/article/recent";
+    /**
+     * 관리자 글쓰기 페이지 이동
+     * @return
+     */
+    @GetMapping("/write")
+    public String writeView(Model model) {
+        // session 검증 필요 - 관리자권한
 
-        model.addAttribute("articles", articleService.getArticles(30));
+        final String VIEW_PATH = "/article/write";
+
+        model.addAttribute("categories", articleService.getCategories());
+
+        return VIEW_PATH;
+    }
+
+    /**
+     * 관리자 글 등록
+     * @return
+     */
+    @PostMapping("/write")
+    public String write(Article article) {
+        // session 검증 필요 - 관리자권한
+
+        final String VIEW_PATH = "redirect:/article/recent";
+
+        // mdService.validationMarkdownSyntax(article);
+        articleService.registerArticle(article);
 
         return VIEW_PATH;
     }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>NoLogger-admin</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <h1><a href="/admin">NoLogger-admin</a></h1>
+</header>
+<div class="path">
+  <a href="/admin">admin</a> / <a th:href="@{/admin/signin}">Sign in for admin</a>
+</div>
+<hr>
+<br>
+<main>
+  <form method="post" action="/admin/signin">
+    <table style="margin-left:auto; margin-right:auto;">
+      <colgroup>
+        <col style="width:100px">
+        <col>
+      </colgroup>
+      <tr>
+        <td colspan="2" style="text-align:center">
+          <h2>Sign in for admin</h2>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align:center">account</td>
+        <td><input id="account" name="account" type="text" style="width:300px" required></td>
+      </tr>
+      <tr>
+        <td style="text-align:center">password</td>
+        <td><input type="password" id="password" name="password" style="width:300px" required></td>
+      </tr>
+      <tr>
+        <td style="text-align:center">pin-number</td>
+        <td><input type="password" id="pinNumber" name="pinNumber" style="width:300px" required></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="Sign in" style="width:100%">
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
+</body>
+</html>

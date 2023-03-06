@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>NoLogger-admin</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <h1><a href="/admin">NoLogger-admin</a></h1>
+</header>
+<div class="path">
+  <a href="/admin">admin</a> / <a th:href="@{/article/write}">Write article</a>
+</div>
+<hr>
+<br>
+<main>
+  <form method="post" action="/article/write">
+    <table style="margin-left:auto; margin-right:auto;">
+      <colgroup>
+        <col style="width:100px">
+        <col>
+      </colgroup>
+      <tr>
+        <td colspan="2" style="text-align:center">
+          <h2>Write Article for admin</h2>
+        </td>
+      </tr>
+      <tr>
+        <td class="date" colspan="2" style="text-align:center">
+          <small>created at: <span th:text="${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')}"></span></small>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td style="text-align:center">title</td>
+        <td><input id="title" name="title" type="text" style="width:99%" required></td>
+      </tr>
+      <tr>
+        <td style="text-align:center">category</td>
+        <td>
+          <input type="text" id="category" name="category" list="categoryList" style="width:99%" required>
+          <datalist id="categoryList" name="category">
+            <option th:each="category : ${categories}" th:value="${category}"></option>
+          </datalist>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <textarea id="content" name="content" cols="100" rows="30" placeholder="input content" required></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <input type="submit" value="등록" style="width:100%">
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
+</body>
+</html>

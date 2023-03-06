@@ -18,7 +18,7 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
-            <li><a href="/article/recent">recent articles</a></li>
+            <li>Search</li>
         </ul>
 
         <ul>
@@ -27,6 +27,21 @@
                 <ul>
                     <li><a href="/article/category/java">Java</a></li>
                     <li><a href="/article/category/spring">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                Recent articles
+                <ul>
+                    <li th:each="article : ${articles}">
+                        <a th:href="@{/article(id=${article.id})}">
+                            <small>[<span th:text="${article.category}"></span>]</small>
+                            <small>[<span th:text="${article.createdAt}"></span>]</small>
+                            <span th:text="${article.title}"></span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

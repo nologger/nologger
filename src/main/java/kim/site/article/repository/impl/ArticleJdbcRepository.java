@@ -35,7 +35,7 @@ public class ArticleJdbcRepository implements ArticleRepository {
 
     @Override
     public List<Article> selectNumberArticles(int number) {
-        final String QUERY = "SELECT * FROM ARTICLE ORDER BY CREATED_AT DESC LIMIT ?";
+        final String QUERY = "SELECT * FROM ARTICLE ORDER BY CREATED_AT DESC, ID DESC LIMIT ?";
         return jdbcTemplate.query(
                 QUERY,
                 (rs, rowNum) -> {
@@ -50,6 +50,17 @@ public class ArticleJdbcRepository implements ArticleRepository {
                     );
                 },
                 number
+        );
+    }
+
+    @Override
+    public List<String> selectCategories() {
+        final String QUERY = "SELECT DISTINCT CATEGORY FROM ARTICLE ORDER BY CATEGORY";
+        return jdbcTemplate.query(
+                QUERY,
+                (rs, rowNum) -> {
+                    return rs.getString("category");
+                }
         );
     }
 
@@ -71,5 +82,13 @@ public class ArticleJdbcRepository implements ArticleRepository {
                 },
                 id
         );
+    }
+
+    @Override
+    public void insertArticle(Article article) {
+        // to do : session에서 계정가져오기
+        final String QUERY = "INSERT INTO ARTICLE VALUES(NEXT VALUE FOR ARTICLE_SEQUENCE, 'admin', ?, ?, ?, now(), now())";
+
+        jdbcTemplate.update(QUERY, article.getTitle(), article.getCategory(), article.getContent());
     }
 }

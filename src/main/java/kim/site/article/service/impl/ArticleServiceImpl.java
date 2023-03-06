@@ -24,7 +24,17 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<String> getCategories() {
+        return articleRepository.selectCategories();
+    }
+
+    @Override
     public Article getArticleForId(String id) {
         return articleRepository.selectArticleForId(id);
+    }
+
+    @Override
+    public void registerArticle(Article article) {
+        articleRepository.insertArticle(article);
     }
 }
