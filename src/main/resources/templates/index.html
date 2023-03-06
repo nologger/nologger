@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head}">
+<head>
+    <title>NoLogger</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div th:replace="~{fragments/aside :: aside}"></div>
+<header>
+    <h1><a href="/">NoLogger</a></h1>
+</header>
+<div class="path">
+    <a href="/">home</a>
+</div>
+<hr>
+<br>
 <main>
-    <h1>Home</h1>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/article/recent">recent articles</a></li>
+        </ul>
+
+        <ul>
+            <li>
+                Categorized articles
+                <ul>
+                    <li><a href="/article/category/java">Java</a></li>
+                    <li><a href="/article/category/spring">Spring</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </main>
 </body>
 </html>

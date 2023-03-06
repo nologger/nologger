@@ -1,67 +1,21 @@
-INSERT INTO CATEGORY
-VALUES(
-    NEXT VALUE FOR CATEGORY_SEQUENCE,
-    NULL,
-    0,
-    TRUE,
-    '/',
-    'Home',
-    NOW(),
-    NOW()
-);
+INSERT INTO ARTICLE
+VALUES(NEXT VALUE FOR ARTICLE_SEQUENCE, 'noname', 'test title', 'java',
+'
+# Lombok
 
-INSERT INTO CATEGORY
-VALUES(
-    NEXT VALUE FOR CATEGORY_SEQUENCE,
-    NULL,
-    1,
-    TRUE,
-    '/about',
-    'About',
-    NOW(),
-    NOW()
-);
-
-INSERT INTO CATEGORY
-VALUES(
-    NEXT VALUE FOR CATEGORY_SEQUENCE,
-    NULL,
-    2,
-    TRUE,
-    NULL,
-    'Category',
-    NOW(),
-    NOW()
-);
-
-INSERT INTO CATEGORY
-VALUES(
-    NEXT VALUE FOR CATEGORY_SEQUENCE,
-    '3',
-    3,
-    FALSE,
-    '/board/ps-code',
-    'ps-code',
-    NOW(),
-    NOW()
-);
-
-INSERT INTO PAGE
-VALUES (
-    NEXT VALUE FOR PAGE_SEQUENCE,
-    '4',
-    'test page1',
-    'test content1',
-    NOW(),
-    NOW()
-);
-
-INSERT INTO PAGE
-VALUES (
-    NEXT VALUE FOR PAGE_SEQUENCE,
-    '4',
-    'test page2',
-    'test content2',
-    NOW(),
-    NOW()
-);
+Annotation	설명
+ @NonNull 	Null 값이 될 수 없다는 것을 명시한다.
+ @Cleanup 	자동으로 close()  메소드를 호출한다.
+ @Getter / @Setter 	코드가 컴파일 될 때 속성들에 대한 Getter/Setter 메소드들을 생성한다.
+ @ToString 	toString() 메소드를 생성한다.
+ @EqualsAndHashCode 	해당 객체의 equals() 와 hashCode()  메소드를 생성한다.
+ @NoArgsConstructor 	파라미터를 받지 않는 생성자를 생성한다.
+ @RequiredArgsContructor 	지정된 속성들에 대한 생성자를 생성한다.
+ @AllArgsConstructor 	모든 속성에 대한 생성자를 생성한다.
+ @Data 	@ToString , @EqualsAndHashCode , @Getter , @Setter , @RequiredArgsConstructor 를 합쳐 둔 어노테이션이다.
+ @Value 	불변(immutable) 클래스를 생성할 때 사용한다.
+ @Log 	자동으로 생기는 log라는 변수를 이용해서 로그를 찍을 수 있다.
+ @Builder	빌더 패턴을 사용할 수 있도록 코드를 생성한다.
+ @SneakyThrows 	예외 발생 시 Throwable 타입으로 반환한다.
+ ',
+  now(), now());

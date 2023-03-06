@@ -1,11 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head :: head}">
+<head>
+  <title>NoLogger</title>
+  <link type="text/css" rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div th:replace="~{fragments/aside :: aside}"></div>
+<header>
+  <h1><a href="/">NoLogger</a></h1>
+</header>
+<div class="path">
+  <a href="/">home</a> / <a href="/about">about</a>
+</div>
+<hr>
+<br>
 <main>
-    <h1>About</h1>
+  hello, i'm NoLogger.
 </main>
 </body>
 </html>

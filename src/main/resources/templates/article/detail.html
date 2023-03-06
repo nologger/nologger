@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>NoLogger</title>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+    <h1><a href="/">NoLogger</a></h1>
+</header>
+<div class="path">
+    <a href="/">home</a> / <a th:href="@{/article/category/{detail}(detail=${article.category})}" th:text="${article.category}"></a> / <a th:href="@{/article(id=${article.id})}" th:text="${article.title}"></a>
+</div>
+<hr>
+<br>
+<main>
+    <h2>Article for <span th:text="${article.category}"></span> :: <span th:text="${article.title}"></span></h2>
+    <div class="date"><small>created at: <span th:text="${article.createdAt}"></span></small></div>
+    <div class="date"><small>modified at: <span th:text="${article.modifiedAt}"></span></small></div>
+    <br>
+    <div class="viewer">
+        <div th:utext="${article.content}">
+        </div>
+    </div>
+</main>
+</body>
+</html>
