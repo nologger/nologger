@@ -19,3 +19,19 @@ Annotation	설명
  @SneakyThrows 	예외 발생 시 Throwable 타입으로 반환한다.
  ',
   now(), now());
+
+INSERT INTO ADMIN_MEMBER
+VALUES (
+    NEXT VALUE FOR ADMIN_MEMBER_SEQUENCE,
+    'admin',
+    'poi098!@',
+    '098',
+    '127.0.0.1',
+    '',
+    '',
+    now(),
+    now()
+);
+
+INSERT INTO CATEGORY VALUES('java', now(), now());
+INSERT INTO CATEGORY VALUES('spring', now(), now());

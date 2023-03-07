@@ -19,6 +19,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<Article> getArticleForUncategory() {
+        return articleRepository.selectArticleForUncategory();
+    }
+
+    @Override
     public List<Article> getArticles(int number) {
         return articleRepository.selectNumberArticles(number);
     }

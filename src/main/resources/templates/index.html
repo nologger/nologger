@@ -18,18 +18,24 @@
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
-            <li>Search</li>
+            <li><a href="/search">Search</a></li>
+        </ul>
+
+        <ul>
+            <li><a href="/article/uncategory">Uncategorized articles</a></li>
         </ul>
 
         <ul>
             <li>
                 Categorized articles
                 <ul>
-                    <li><a href="/article/category/java">Java</a></li>
-                    <li><a href="/article/category/spring">Spring</a></li>
+                    <li th:each="category : ${categories}">
+                        <a th:href="@{/article/category/{id}(id=${category.id})}" th:text="${category.id}"></a>
+                    </li>
                 </ul>
             </li>
         </ul>
+
 
         <ul>
             <li>

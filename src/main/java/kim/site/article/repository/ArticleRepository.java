@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ArticleRepository {
     List<Article> selectArticleForCategory(String category);
+    List<Article> selectArticleForUncategory();
     List<Article> selectNumberArticles(int number);
     List<String> selectCategories();
     Article selectArticleForId(String id);

@@ -2,16 +2,21 @@ package kim.site.article.controller;
 
 import kim.site.article.domain.Article;
 import kim.site.article.service.ArticleService;
+import kim.site.category.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+    @Autowired
+    CategoryService categoryService;
 
 
     @GetMapping
@@ -34,17 +39,26 @@ public class ArticleController {
         return VIEW_PATH;
     }
 
+    @GetMapping("/uncategory")
+    public String uncategoryView(Model model) {
+        final String VIEW_PATH = "/article/category";
+
+        model.addAttribute("category", "uncategory");
+        model.addAttribute("articles", articleService.getArticleForUncategory());
+
+        return VIEW_PATH;
+    }
+
+
     /**
      * 관리자 글쓰기 페이지 이동
      * @return
      */
     @GetMapping("/write")
     public String writeView(Model model) {
-        // session 검증 필요 - 관리자권한
-
         final String VIEW_PATH = "/article/write";
 
-        model.addAttribute("categories", articleService.getCategories());
+        model.addAttribute("categories", categoryService.getCategories().stream().map(n -> n.getId()).toArray());
 
         return VIEW_PATH;
     }
@@ -54,10 +68,12 @@ public class ArticleController {
      * @return
      */
     @PostMapping("/write")
-    public String write(Article article) {
-        // session 검증 필요 - 관리자권한
+    public String write(Article article, HttpSession session) {
+        final String VIEW_PATH = "redirect:/";
 
-        final String VIEW_PATH = "redirect:/article/recent";
+        if (session.getAttribute("member") == null) {
+            return VIEW_PATH;
+        }
 
         // mdService.validationMarkdownSyntax(article);
         articleService.registerArticle(article);

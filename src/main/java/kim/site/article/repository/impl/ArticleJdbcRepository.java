@@ -34,6 +34,25 @@ public class ArticleJdbcRepository implements ArticleRepository {
     }
 
     @Override
+    public List<Article> selectArticleForUncategory() {
+        final String QUERY = "SELECT * FROM ARTICLE WHERE CATEGORY NOT IN (SELECT ID FROM CATEGORY)";
+        return jdbcTemplate.query(
+                QUERY,
+                (rs, rowNum) -> {
+                    return new Article(
+                            rs.getString("id"),
+                            rs.getString("writer"),
+                            rs.getString("title"),
+                            rs.getString("category"),
+                            rs.getString("content"),
+                            rs.getTimestamp("created_at").toLocalDateTime().toLocalDate(),
+                            rs.getTimestamp("modified_at").toLocalDateTime().toLocalDate()
+                    );
+                }
+        );
+    }
+
+    @Override
     public List<Article> selectNumberArticles(int number) {
         final String QUERY = "SELECT * FROM ARTICLE ORDER BY CREATED_AT DESC, ID DESC LIMIT ?";
         return jdbcTemplate.query(
