@@ -32,6 +32,7 @@ public class AdminController {
 
         String ipAddress = adminService.getClientIpAddress(request);
         if (adminService.isAccessibleIpAddress(ipAddress)) {
+            log.info("unauthorized ip address: {}", ipAddress);
             return SIGN_IN_PATH;
         }
 

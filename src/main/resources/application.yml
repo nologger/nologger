@@ -5,8 +5,8 @@ site:
   email: 1721046@gmail.com
 
 # logging
-logging.level.root: info
-# logging.level.root: debug
+#logging.level.root: info
+logging.level.root: debug
 
 # spring.datasource
 spring.datasource.driver-class-name: org.h2.Driver

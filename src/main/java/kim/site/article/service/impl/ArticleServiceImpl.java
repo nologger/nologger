@@ -35,7 +35,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article getArticleForId(String id) {
-        return articleRepository.selectArticleForId(id);
+        Article article = articleRepository.selectArticleForId(id);
+        article.setContent(article.getContent().replaceAll("\n", "<br>"));
+        return article;
     }
 
     @Override

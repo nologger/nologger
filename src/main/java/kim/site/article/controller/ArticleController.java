@@ -3,6 +3,7 @@ package kim.site.article.controller;
 import kim.site.article.domain.Article;
 import kim.site.article.service.ArticleService;
 import kim.site.category.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 
 @Controller
+@Slf4j
 @RequestMapping("/article")
 public class ArticleController {
     @Autowired
@@ -76,6 +78,7 @@ public class ArticleController {
         }
 
         // mdService.validationMarkdownSyntax(article);
+        log.info("article content: {}", article.getContent());
         articleService.registerArticle(article);
 
         return VIEW_PATH;
